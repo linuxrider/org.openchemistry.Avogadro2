@@ -1,0 +1,41 @@
+name: python-cclib
+buildsystem: simple
+build-commands:
+- pip install --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} cclib
+sources:
+- type: file
+  url: https://files.pythonhosted.org/packages/7c/24/5a8570dbe992fc5edc8b8300dd9d6d12784868b9f59455d415952137668d/cclib-1.6.1.tar.gz
+  sha256: 8a445d52b89ac6e8496d6423e3fe736be9f4a5fff0d765cb9fa4c36b7248842b
+modules:
+- name: python-numpy
+  buildsystem: simple
+  ensure-writable:
+  - easy-install.pth
+  build-commands:
+  - mkdir -p /app/lib/python2.7/site-packages
+  - CFLAGS='-L/usr/lib -Lbuild/temp.linux-x86_64-3.4 -I/usr/include -I/usr/include/python2.7' CXX=/usr/bin/g++ CC=/usr/bin/gcc PYTHONUSERBASE=/app/ python setup.py install --prefix=/app # Working around linking issues"
+  sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/cf/8d/6345b4f32b37945fedc1e027e83970005fc9c699068d2f566b82826515f2/numpy-1.16.2.zip
+    sha256: 6c692e3879dde0b67a9dc78f9bfb6f61c666b4562fd8619632d7043fb5b691b0
+  modules:
+  - name: lapack
+    buildsystem: cmake
+    builddir: true
+    sources:
+    - type: archive
+      url: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
+      sha256: deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6
+  - name: openblas
+    no-autogen: true
+    make-args:
+    - DYNAMIC_ARCH=1
+    - FC=gfortran
+    - USE_OPENMP=0    ## OpenMP off by default, this hack skips 'test_fork' which crashes on i386
+    make-install-args:
+    - PREFIX=/app
+    sources:
+    - type: archive
+      url: https://github.com/xianyi/OpenBLAS/archive/v0.3.5.tar.gz
+      sha256: 0950c14bd77c90a6427e26210d6dab422271bc86f9fc69126725833ecdaa0e85
+

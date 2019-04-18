@@ -1,0 +1,40 @@
+- name: sip
+  buildsystem: simple
+  build-commands:
+  - python3 configure.py
+    --bindir=/app/bin
+    --destdir=/app/lib/python3/dist-packages
+    --incdir=/app/include/python3
+    --sipdir=/app/share/sip
+    --stubsdir=/app/lib/python3/dist-packages
+    --sip-module=PyQt5.sip
+  - make -j $FLATPAK_BUILDER_N_JOBS
+  - make install
+  cleanup:
+  - /bin
+  sources:
+  - type: archive
+    url: https://www.riverbankcomputing.com/static/Downloads/sip/4.19.15/sip-4.19.15.tar.gz
+    sha256: 2b5c0b2c0266b467b365c21376d50dde61a3236722ab87ff1e8dacec283eb610
+- name: pyqt
+  buildsystem: simple
+  build-commands:
+  - QMAKEPATH=/app/lib python3 configure.py
+    --confirm-license
+    --sip-incdir=/app/include/python3
+    --bindir=/app/bin
+    --destdir=/app/lib/python3/dist-packages
+    --designer-plugindir=/app/lib/plugins/designer
+    --qml-plugindir=/app/lib/plugins/PyQt5
+    --sipdir=/app/share/sip
+    --stubsdir=/app/lib/python3/dist-packages/PyQt5
+  - make -j $FLATPAK_BUILDER_N_JOBS
+  - make install
+  cleanup:
+  - /bin
+  sources:
+  - type: archive
+    url: https://www.riverbankcomputing.com/static/Downloads/PyQt5/PyQt5_gpl-5.12.1.tar.gz
+    sha256: 3718ce847d824090fd5f95ff3f13847ee75c2507368d4cbaeb48338f506e59bf
+
+

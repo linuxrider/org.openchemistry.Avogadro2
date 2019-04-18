@@ -1,0 +1,30 @@
+---
+app-id: com.github.Avogadro2
+branch: '1.9.1'
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
+command: avogadro2
+rename-desktop-file: avogadro2.desktop
+rename-icon: avogadro2
+copy-icon: true
+finish-args:
+- "--device=dri"
+- "--share=ipc"
+- "--share=network"
+- "--socket=x11"
+- "--socket=wayland"
+- "--filesystem=home"
+modules:
+- modules/eigen.yaml
+- modules/glew.yaml
+- modules/spglib.yaml
+- modules/libmsym.yaml
+- modules/molequeue.yaml
+- modules/glu.yaml
+- modules/avogadrolibs.yaml
+- modules/hdf5.yaml
+- modules/python-cclib.yaml
+- modules/openbabel.yaml
+- avogadro.yaml
+

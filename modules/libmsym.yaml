@@ -1,0 +1,9 @@
+name: msymlib
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+- -DBUILD_SHARED_LIBS:BOOL=ON
+sources:
+- type: archive
+  url: https://github.com/mcodev31/libmsym/archive/v0.2.3-paper.tar.gz
+  sha256: 3741ebe163cf40696570d6b62e4834ca587d43dcac9de713994cc5e2960fb8fd

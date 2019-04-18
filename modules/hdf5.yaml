@@ -1,0 +1,6 @@
+name: hdf5
+no-autogen: true
+sources:
+- type: archive
+  url: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.4/src/hdf5-1.10.4.tar.bz2
+  sha256: 1267ff06aaedc04ca25f7c6026687ea2884b837043431195f153401d942b28df

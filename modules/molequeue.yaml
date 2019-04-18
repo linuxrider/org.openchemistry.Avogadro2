@@ -1,0 +1,9 @@
+name: molequeue
+buildsystem: cmake-ninja
+config-opts:
+- -DCMAKE_BUILD_TYPE=Release
+builddir: true
+sources:
+- type: archive
+  url: https://github.com/OpenChemistry/molequeue/archive/0.9.0.tar.gz
+  sha256: 7dd234742c8d73be95281fedf4ed9d09648ecc351afb5f098cd32f48c3df3bd5

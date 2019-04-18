@@ -1,0 +1,11 @@
+name: avogadrolibs
+buildsystem: cmake-ninja
+config-opts:
+- -DOpenGL_GL_PREFERENCE=GLVND
+- -DSPGLIB_INCLUDE_DIR=/app/include/spglib
+- -Dlibmsym_DIR=/app/lib
+builddir: true
+sources:
+- type: archive
+  url: https://github.com/OpenChemistry/avogadrolibs/archive/1.91.0.tar.gz
+  sha256: 752933c26b46dfbf12f7537b1f8dd9960a4fd29f0cccbed5b868b00474bb42af

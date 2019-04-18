@@ -1,0 +1,12 @@
+name: spglib
+buildsystem: cmake-ninja
+config-opts:
+- -DINCLUDE_DIR=/app/include
+builddir: true
+post-install:
+- mkdir /app/include/spglib
+- mv /app/include/spglib.h /app/include/spglib/spglib.h
+sources:
+- type: archive
+  url: https://github.com/atztogo/spglib/archive/v1.11.2.1.tar.gz
+  sha256: f6795523a04871e012e7f5f5ab97b249fa36657b73cdc9b4ea53ef023cfcaac4

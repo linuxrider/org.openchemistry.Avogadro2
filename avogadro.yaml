@@ -1,0 +1,9 @@
+name: avogadro
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+- -DCMAKE_BUILD_TYPE=Release
+sources:
+- type: archive
+  url: https://github.com/OpenChemistry/avogadroapp/archive/1.91.0.tar.gz
+  sha256: 3bbe130027a75116de1d5c48dd7e97ff0fa8a785a96c500767bd4965f52e20df
