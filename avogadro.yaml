@@ -3,6 +3,8 @@ buildsystem: cmake-ninja
 builddir: true
 config-opts:
 - -DCMAKE_BUILD_TYPE=Release
+post-install:
+- install -Dm644 ../avogadro/icons/avogadro2_128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/avogadro2.png 
 sources:
 - type: archive
   url: https://github.com/OpenChemistry/avogadroapp/archive/1.91.0.tar.gz
