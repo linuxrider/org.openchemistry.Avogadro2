@@ -1,5 +1,5 @@
 ---
-app-id: com.github.Avogadro2
+app-id: org.openchemistry.Avogadro2
 branch: '1.9.1'
 runtime: org.kde.Platform
 runtime-version: '5.12'
